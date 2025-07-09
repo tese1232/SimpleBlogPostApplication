@@ -1,8 +1,16 @@
-﻿using BlogPostSimpleApp.Models;
+﻿using System;
 using System.Collections.Generic;
-public class Blog
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BlogPostSimpleApp.Models
 {
-    public int BlogId { get; set; } // Primary Key
-    public string Url { get; set; }
-    public List<Post> Posts { get; set; }
+    public class Blog
+    {
+        public int BlogId { get; set; }
+        public string Url { get; set; }
+        public bool isPublic { get; set; }
+        public List<Post> Posts { get; set; }
+    }
 }
