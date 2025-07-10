@@ -13,5 +13,7 @@ namespace BlogPostSimpleApp.Models
         public string Content { get; set; }
         public int BlogId { get; set; } // Foreign Key
         public Blog Blog { get; set; }
+        public int PostTypeId { get; set; }
+        public PostType PostType { get; set; }
     }
 }
