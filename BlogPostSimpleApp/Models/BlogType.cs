@@ -17,5 +17,6 @@ namespace BlogPostSimpleApp.Models
 
         [MaxLength(400)]
         public string Description { get; set; }
+        public List<Blog> Blogs { get; set; }
     }
 }

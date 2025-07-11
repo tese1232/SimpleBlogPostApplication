@@ -12,5 +12,7 @@ namespace BlogPostSimpleApp.Models
         public string Url { get; set; }
         public bool isPublic { get; set; }
         public List<Post> Posts { get; set; }
+        public int BlogTypeId { get; set; }         // Foreign key
+        public BlogType BlogType { get; set; }      // Navigation property
     }
 }
