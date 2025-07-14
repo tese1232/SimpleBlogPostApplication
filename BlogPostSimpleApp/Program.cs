@@ -9,27 +9,36 @@ class Program
     static void Main()
     {
         using var context = new AppDbContext();
-        if (!context.BlogTypes.Any()){
+        if (!context.BlogTypes.Any())
+        {
             var type1 = new BlogType { Name = "Tech", Description = "Tech Blog", Status = 1 };
-           var type2 = new BlogType { Name = "food", Description = "food Blog", Status = 2 };
+            var type2 = new BlogType { Name = "food", Description = "food Blog", Status = 2 };
 
-          context.BlogTypes.AddRange(type1,  type2);
-           context.SaveChanges();
+            context.BlogTypes.AddRange(type1, type2);
+            context.SaveChanges();
         }
         if (!context.PostTypes.Any())
         {
-           var type1 = new PostType { Name = "Animal", Description = "Animal Blog", Status = 1 };
-           var type2 = new PostType { Name = "Cars", Description = "Cars Blog", Status = 2 };
+            var type1 = new PostType { Name = "Animal", Description = "Animal Blog", Status = 1 };
+            var type2 = new PostType { Name = "Cars", Description = "Cars Blog", Status = 2 };
 
             context.PostTypes.AddRange(type1, type2);
-           context.SaveChanges();
+            context.SaveChanges();
         }
         if (!context.Blogs.Any())
         {
-            var type1 = new Blog { Url = "https://myblog.com", isPublic = true, BlogTypeId=1};
+            var type1 = new Blog { Url = "https://myblog.com", isPublic = true, BlogTypeId = 1 };
             var type2 = new Blog { Url = "https://myfoodblog.com", isPublic = true, BlogTypeId = 2 };
 
             context.Blogs.AddRange(type1, type2);
+            context.SaveChanges();
+        }
+        if (!context.Posts.Any())
+        {
+            var type1 = new Post { Title = "Maths", Content = "Math Posts", BlogId = 6, PostTypeId=2 , UserId=1 };
+            var type2 = new Post { Title = "Games", Content = "Game Posts", BlogId = 7, PostTypeId = 3, UserId = 2 };
+
+            context.Posts.AddRange(type1, type2);
             context.SaveChanges();
         }
 
