@@ -9,8 +9,31 @@ class Program
     static void Main()
     {
         using var context = new AppDbContext();
+        if (!context.BlogTypes.Any()){
+            var type1 = new BlogType { Name = "Tech", Description = "Tech Blog", Status = 1 };
+           var type2 = new BlogType { Name = "food", Description = "food Blog", Status = 2 };
 
-        // Add 3 Users
+          context.BlogTypes.AddRange(type1,  type2);
+           context.SaveChanges();
+        }
+        if (!context.PostTypes.Any())
+        {
+           var type1 = new PostType { Name = "Animal", Description = "Animal Blog", Status = 1 };
+           var type2 = new PostType { Name = "Cars", Description = "Cars Blog", Status = 2 };
+
+            context.PostTypes.AddRange(type1, type2);
+           context.SaveChanges();
+        }
+        if (!context.Blogs.Any())
+        {
+            var type1 = new Blog { Url = "https://myblog.com", isPublic = true, BlogTypeId=1};
+            var type2 = new Blog { Url = "https://myfoodblog.com", isPublic = true, BlogTypeId = 2 };
+
+            context.Blogs.AddRange(type1, type2);
+            context.SaveChanges();
+        }
+
+
         var users = new List<User>
         {
             new User { Name = "Tanziya", Email = "tanziya@gmail.com", PhoneNumber = "9845329852" },
@@ -21,7 +44,7 @@ class Program
         context.users.AddRange(users);
         context.SaveChanges();
 
-        // Add a Blog
+        //Add a Blog
         Console.Write("Enter blog URL: ");
         var url = Console.ReadLine();
         var blog = new Blog { Url = url };
@@ -36,7 +59,7 @@ class Program
             Content = "This is my first post!",
             BlogId = blog.BlogId,
             UserId = user.UserId,
-            PostTypeId = 1 
+            PostTypeId = 1
         };
 
         context.Posts.Add(post);
